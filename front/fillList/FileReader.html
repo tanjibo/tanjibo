@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>fileReader Api</title>
+</head>
+<body>
+<input type="file" name="file" onchange="showPreview(this)" />  
+<img id="portrait" src="" width="70" height="75">
+</body>
+<script type="text/javascript">
+   function showPreview(source) {  
+            var file = source.files[0];  
+            if(window.FileReader) {  
+                var fr = new FileReader(); 
+                //读取开始 
+                fr.onloadstart=function(){
+                	console.log('开始')
+                }
+                //读取中
+                fr.onprogress=function(){
+                  console.log('读取中');
+                }
+                //读取出错误
+                fr.onerror=function(){
+                    console.log('处错误');
+                }
+                //读取文件成功
+                 fr.onload=function(){
+                     console.log('读取成功时候触发');
+                }
+                //读取文件，无论成功或失败
+                fr.onloadend = function(e) {  
+                	console.log("无论成功或失败");
+                    document.getElementById("portrait").src = e.target.result;  
+                };  
+                fr.readAsDataURL(file);  
+            }  
+        }  
+	function uploadAndSubmit(){
+
+		var form=document.forms['demoForm'];
+		if(form['file'].files.length>0){
+			var file=form['file'].files[0];
+			//判断是否支持fileReader
+			if(!window.FileReader){
+				alert('not support by your browser!');return false;
+			}
+		   var reader=new FileReader();
+		   reader.loadstart=function(){
+		   	//这个事件在读取开始时候触发
+		   	alert(111)
+		   	console.log('onloadstart');
+		   	//document.queryselector('#bytesTotal').textContent=file.size;
+		   }
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="yes" name="apple-mobile-web-app-capable"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+	<meta name="format-detection" content="telephone=no"/>
+	<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
+	<title>demo1 测试</title>
+	<style type="text/css">
+    [v-cloak] { display: none }
+	</style>
+</head>
+<body>
+   <div id="app">
+	 <pre v-cloak>{{data | json}}</pre>
+	</div>
+</body>
+<script src="http://cdn.bootcss.com/vue/1.0.26-csp/vue.min.js"></script>
+<script>
+
+    var data={
+    	message:111
+    };
+	var vm=new Vue({
+      el:'#app',
+      data:data,
+      init:function(){
+        
+      },
+
+	})
+   data.a=3;
+   alert(vm.a);
+</script>
+</html>

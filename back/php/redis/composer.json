@@ -1,0 +1,12 @@
+{
+    "name": "tanjibo/redis",
+    "authors": [
+        {
+            "name": "tanjibo",
+            "email": "tanjibo@chuchujie.com"
+        }
+    ],
+    "require": {
+        "predis/predis": "^1.1"
+    }
+}

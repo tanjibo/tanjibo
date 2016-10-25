@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>computed</title>
+</head>
+<body>
+<div id="app">
+	a={{a}},b={{b}}
+</div>
+</body>
+<script src="http://cdn.bootcss.com/vue/1.0.27-csp/vue.js"></script>
+<script type="text/javascript">
+    var vm=new Vue({
+    	el:"#app",
+    	data:{
+    		a:1
+    	},
+    	computed:{
+    		b:function(){
+    			return this.a+1;
+    		}
+    	}
+    })
+</script>
+</html>

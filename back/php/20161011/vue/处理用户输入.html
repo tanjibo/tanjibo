@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>处理用户输入</title>
+</head>
+<body>
+  <div id="app">
+  	<p>{{message}}</p>
+  	<button v-on:click="reverseMessage"> 翻转字符串</button>
+  </div>
+	
+</body>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+	
+	new Vue({
+     el :"#app",
+     data:{
+     	message:'tanjibo',
+     },
+     methods:{
+     	reverseMessage:function(){
+    
+          this.message= this.message.split('').reverse().join('');
+     	}
+     }
+	})
+</script>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单控件绑定</title>
+</head>
+<body>
+	 <div id="app">
+	 	 <p>{{message}}</p>
+	    <input type="text" v-model='message' placeholder="please input your content">
+	    <div>
+	    	<p>单选框</p>
+	    	<input type="checkbox" id="checkbox" v-model="checked">
+	    	<label for="checkbox">{{checked?'选中':'没选中'}}</label>
+	    </div>
+	 </div>
+</body>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+	 var vm=new Vue({
+	 	el:'#app',
+	 	data:{
+	 		message:'111',
+	 		checked:""
+	 	},
+	 
+	 })
+
+</script>
+</html>

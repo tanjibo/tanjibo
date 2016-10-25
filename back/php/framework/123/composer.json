@@ -1,0 +1,12 @@
+{
+    "name": "tanjibo/123",
+    "authors": [
+        {
+            "name": "tanjibo",
+            "email": "tanjibo@chuchujie.com"
+        }
+    ],
+    "require": {
+        "klein/klein": "^2.1"
+    }
+}

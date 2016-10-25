@@ -1,0 +1,66 @@
+@charset "UTF-8";
+$error:rgb(231,68,48) !default;
+$success:rgb(30,158,116) !default;
+/**
+ * 错误提示
+ */
+.wrong,.error,.warnning,.success,.right{
+    font-style:normal;
+    background:url(../img/ico.png) no-repeat;
+    padding-left:20px;
+}
+.wrong,.error{
+    color:$error;
+    background-position:0 -50px;
+
+}
+
+.warnning{
+    background-position:0 -200px;
+}
+
+.success,.right{
+    color:$success;
+    background-position:0 0;
+}
+
+/**
+ * bootstrap 警告框
+ */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.alert-warning {
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert h4 {
+  margin-top: 0;
+  color: inherit;
+}
+.alert .alert-link {
+  font-weight: bold;
+}
+.alert > p,
+.alert > ul {
+  margin-bottom: 0;
+}
+.alert > p + p {
+  margin-top: 5px;
+}
+
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}

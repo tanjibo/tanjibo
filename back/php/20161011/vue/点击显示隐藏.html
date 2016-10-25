@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>显示隐藏</title>
+</head>
+<body>
+  <div id="app">
+  	 <button v-on:click="showAndHide">显示</button>
+     <div v-if="ishow">
+	     <p>{{message}}</p>
+	  	 <input v-model="message">
+     </div>
+  
+  </div>
+	
+</body>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el:'#app',
+	    data:{
+          ishow:false,
+          message:'是不是很吊'
+	    },
+	    methods:{
+	    	showAndHide:function(){
+	    		alert(this.ishow)
+             this.ishow= !this.ishow;
+	    	}
+	    }
+	})
+</script>
+</html>

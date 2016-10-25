@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>初探vue组件化2</title>
+</head>
+<body>
+   <div id="app">
+   	<tpl num="2.0"></tpl>
+   </div>
+	 <template id="counter">
+	 	  <div>初探vue组件化{{num}}</div>
+	 	  <button>不试一下怎么学的会呢</button>
+	 	  <p>同学们一定要勤加练习 </p>
+	 </template>
+</body>
+<script src="http://cdn.bootcss.com/vue/1.0.27-csp/vue.js"></script>
+<script type="text/javascript">
+       //创建组件构造器
+       Vue.config.devtools = true
+	var tpl=Vue.extend({
+          template:'#counter',
+          props:['num'],
+          data:function(){
+            return {}
+          }
+	})
+	 //注册组件构造器
+	  Vue.component('tpl',tpl);
+	  //实例化vue
+	  
+	  var vm= new Vue({
+	  	el:'#app'
+	  })
+</script>
+</html>

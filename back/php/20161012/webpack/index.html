@@ -1,0 +1,78 @@
+<!doctype html>
+<html>  
+<head>
+<meta charset="utf-8">
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
+<link rel="stylesheet" type="text/css" href="main.css">
+<title>品牌尾货清</title>
+
+</head>
+
+<body style="background: #fff;"  id="app">
+<!--头部信息-->
+<header>
+    <div class="banner-cl">
+    <img class="wd100" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0813/750x360%E9%97%AA%E8%B4%ADbanner%281%29.png"/>
+    <img class="fenxiang" onclick="showPupop();" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0813/64x64%E9%97%AA%E8%B4%AD%E5%88%86%E4%BA%AB.png" />
+    </div>
+    <img class="wd100" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0808/mark.png"/>
+
+</header>
+<!--商品信息-->
+<section class="pd10"> 
+
+	    <div  v-for='(item,index) in items' class="box" v-bind:class="{'mt10':!index,'mt30':index}">
+	
+    	   <img class="pic lazy"  :src="item.img_url"/>
+           <img v-if="!item.current_stock" class="empty" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0808/empty.png"/>
+           <div class="con">
+
+        	<h2>{{item.title}}</h2>
+               <p class="duanMa  ftfff mt5">
+                  <span class='bgd5 mr8' v-for="tag in item.tags.split(',')">{{tag}}</span>
+                </p>
+            <p class="ftgrey ft08">清仓价 <span class="ftred">¥<em class="ft12 mr10">{{item.price |  currency }}</em></span><del>¥{{item.old_price | currency}}</del></p>
+            <p class="ftgrey ft08 mt5">
+                <span>限量{{item.stock}}</span>
+                    <span v-if="!item.current_stock">已抢光</span>
+                    <span v-else>{{item.current_stock}}</span>
+            </p>
+
+            <img class="btn" onclick="buyNative(<?php echo $productInfo[$i]['productId'];?>,<?php echo $productInfo[$i]['custom_sort']=='sea'?1:0;?>);" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0808/btn.png"/>
+        </div>
+
+        <p class="num ft07">限量</p>
+        <img class="mark" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0808/mark2.png"/>
+    </div>
+    <?php }?>
+</section>
+<!--浮标-->
+<img class="fubiao" onclick="goto();" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0808/mark3.png" />
+
+<footer>
+	<img class="wd100 mt30" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0808/foot.png"/>
+</footer>
+<div style="display: none;">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256092095'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256092095' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+<!--分享弹窗 开始-->
+<div class="layer z_big Ndisplay" id="share_content">
+    <p class="share_content ft07 clearfix">
+        <img src="http://huodongcdn.chuchujie.com/20160409/0911/img/close.png" onclick="hidePupop();" class="close" id="close_share" alt=""/>
+        <a href="javascript:;"><img src="http://huodongcdn.chuchujie.com/20160409/0911/img/share_pyq.png" alt="" onclick="shareWeixin('shareToWeixin_type',1);"/><span>朋友圈</span></a>
+        <a href="javascript:;"><img src="http://huodongcdn.chuchujie.com/20160409/0911/img/share_wx.png" alt="" onclick="shareWeixin('shareToWeixinFriends_type',2);"/><span>微信朋友</span></a>
+        <a href="javascript:;"><img src="http://huodongcdn.chuchujie.com/20160409/0911/img/share_qq.png" alt="" onclick="shareWeixin('shareToQQFriends_type',3);"/><span>QQ好友</span></a>
+        <a href="javascript:;"><img src="http://huodongcdn.chuchujie.com/20160409/0911/img/share_kj.png" alt="" onclick=" shareWeixin('shareToQQZone_type',4);"/><span>QQ空间</span></a>
+    </p>
+</div>
+<!--分享弹窗 end-->
+</body>
+
+<script src="http://huodongcdn.chuchujie.com/static/js/lazyload.min.js"></script>
+<script type="text/javascript" src="http://static.culiu.org/libs/ccj_js_bridge/2.0/ccj_js_bridge.min.js"></script>
+ <script type="text/javascript" src="main.js"></script>
+</html>

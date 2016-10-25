@@ -1,0 +1,277 @@
+<!doctype html>
+<html>  
+<head>
+<meta charset="utf-8">
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport"/>
+<title>品牌尾货清</title>
+<style>
+    body{font-size:12px; min-width:320px; font-family:"Helvetica"; font-weight:normal; line-height:1.5;}
+    html,body,h1,h2,h3,p,div,ul,li,span,em,dl,dt,dd{margin:0;padding:0;}
+    ul,li{list-style:none;}
+    html,body,img{border:0;}
+    em{font-style:normal;}
+    h1,h2,h3,strong,em,i{ font-style:normal; font-weight:normal;}
+    a,a:hover{text-decoration:none;}
+    .clearfix:after{clear:both; content:''; font-size:0; display:block; visibility:hidden; height:0}
+    .container{width:100%;}
+    textarea,input,button,select{ outline:none; border:0;}
+    textarea{resize:none;}
+    .bd{ font-weight:bold;}
+    .wd100{ display:block; width:100%;}
+    /*定位*/
+    .fl{ float:left;}
+    .fr{ float:right;}
+    .Ndisplay{ display:none;}
+    /*字体颜色*/
+    .ftfff{ color:#fff;}
+    .ftred{ color:#fa2b5c;}
+    .ftgrey{ color:#bfbfbf;}
+    /*字号大小*/
+    .ft07{ font-size:0.7rem;}
+    .ft08{ font-size:0.8rem;}
+    .ft09{ font-size:0.9rem;}
+    .ft12{ font-size:1.2rem;}
+    /*背景颜色*/
+    .bgd5{ background:#d5d5d5;}
+    /*间距*/
+    .pd10{ padding:10px;}
+    .pt5{ padding-top:5px;}
+    .mr10{ margin-right:10px;}
+    .mr8{ margin-right:8px;}
+    .mt5{ margin-top:5px;}
+    .mb5{ margin-bottom:5px;}
+    .mt10{ margin-top:10px;}
+    .mt18{ margin-top:18px;}
+    .mt30{ margin-top:30px;}
+    /*内容区*/
+    .box{ padding-left:130px; height:120px; position:relative;}
+    .box .pic,.box .empty{ width:120px; position:absolute; left:0; top:0;}
+    .box .empty{ z-index:3; background:rgba(0,0,0,0.5)}
+    .con{ position:relative;}
+    .con h2{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:1rem;}
+    .duanMa{ height:40px;}
+    .duanMa span{ display:inline-block; padding:0 6px; border-radius:1px; font-size:12px;}
+    .btn{  position:absolute; right:0px; }
+    @media screen and (min-width:320px) and (max-width:359px)
+    {
+        .btn{width:65px; bottom:2px;}
+    }
+    @media screen and (min-width:360px)
+    {
+        .btn{width:80px; bottom:2px;}
+    }
+    @media screen and (min-width:320px) and (max-width:359px)
+    {
+
+        .fubiao{ top:11%;}
+
+    }
+    @media screen and (min-width:360px) and (max-width:413px)
+    {
+
+        .fubiao{ top:13%;}
+
+    }
+    @media screen and (min-width:414px) and (max-width:500px)
+    {
+
+        .fubiao{ top:16%;}
+
+    }
+    @media screen and (min-width:501px)
+    {
+
+        .fubiao{ top:30%;}
+
+
+    }
+    .num{ width:16px; height:34px; background:#fff; position:
+            absolute; left:1px;top:1px; text-align:center; z-index:3;}
+    .mark{ width:20px; position:absolute; left:-5px; top:-8px;}
+    .fubiao{ width:60px; position:fixed; right:10px;}
+    .banner-cl{
+        position: relative;}
+    .fenxiang{
+        position: absolute;
+        top:10px;
+        right:10px;
+        width:34px;
+    }
+    /*分享*/
+    .layer{ position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:190;}
+    .layer.z_big{ z-index:220;}
+    .Ndisplay{ display:none;}
+    .share_content{ position:fixed; text-align: center; bottom:0; left:0; width:100%; padding:30px 0; background:#FFF; z-index:300;}
+    .share_content .close{ position:absolute; top:3px; right:3px; width:20px; height:20px;}
+    .share_content a{ width:17%; margin:0 4%; line-height:14px; display:inline-block; text-align:center; float:left;}
+    .share_content a img{ width:85%; display:inline-block;}
+    .share_content a span{ color:#5c5253; display:block;}
+</style>
+</head>
+
+<body style="background: #fff;"  id="app">
+<!--头部信息-->
+<header>
+    <div class="banner-cl">
+    <img class="wd100" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0813/750x360%E9%97%AA%E8%B4%ADbanner%281%29.png"/>
+    <img class="fenxiang" onclick="showPupop();" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0813/64x64%E9%97%AA%E8%B4%AD%E5%88%86%E4%BA%AB.png" />
+    </div>
+    <img class="wd100" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0808/mark.png"/>
+
+</header>
+<!--商品信息-->
+<section class="pd10"> 
+
+	    <div  v-for='(item,index) in items' class="box" v-bind:class="{'mt10':!index,'mt30':index}">
+	
+    	   <img class="pic lazy"  :src="item.img_url"/>
+           <img v-if="!item.current_stock" class="empty" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0808/empty.png"/>
+           <div class="con">
+
+        	<h2>{{item.title}}</h2>
+               <p class="duanMa  ftfff mt5">
+                  <span class='bgd5 mr8' v-for="tag in item.tags.split(',')">{{tag}}</span>
+                </p>
+            <p class="ftgrey ft08">清仓价 <span class="ftred">¥<em class="ft12 mr10">{{item.price |  currency }}</em></span><del>¥{{item.old_price | currency}}</del></p>
+            <p class="ftgrey ft08 mt5">
+                <span>限量{{item.stock}}</span>
+                    <span v-if="!item.current_stock">已抢光</span>
+                    <span v-else>{{item.current_stock}}</span>
+            </p>
+
+            <img class="btn" onclick="buyNative(<?php echo $productInfo[$i]['productId'];?>,<?php echo $productInfo[$i]['custom_sort']=='sea'?1:0;?>);" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0808/btn.png"/>
+        </div>
+
+        <p class="num ft07">限量</p>
+        <img class="mark" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0808/mark2.png"/>
+    </div>
+
+</section>
+<!--浮标-->
+<img class="fubiao" v-on:click="goto" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0808/mark3.png" />
+
+<footer>
+	<img class="wd100 mt30" src="http://huodongcdn.chuchujie.com/brandClear/imgs/0808/foot.png"/>
+</footer>
+<div style="display: none;">
+    <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256092095'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256092095' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+<!--分享弹窗 开始-->
+<share></share>
+<!--分享弹窗 end-->
+</body>
+<script src="http://cdn.bootcss.com/vue/2.0.0-rc.1/vue.js"></script>
+<script src="http://static.culiu.org/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="js.js"></script>
+<script src="http://huodongcdn.chuchujie.com/static/js/lazyload.min.js"></script>
+<script type="text/javascript" src="http://static.culiu.org/libs/ccj_js_bridge/2.0/ccj_js_bridge.min.js"></script>
+<script type="text/javascript">
+    var _czc = _czc || [];
+    _czc.push(["_trackPageview", "品牌尾货清"]);
+    _czc.push(["_setAutoPageview", false]);
+
+    /**
+     * 判断是否微信内打开
+     */
+    if(!IsChuchujieAPP()){
+        $('.fenxiang').hide();
+    }
+
+    /**
+     * 跳转详情
+     * @param productId
+     * @param type
+     * @returns {boolean}
+     */
+    function buyNative(productId,type){
+        if(window._czc) {
+            _czc.push(['_trackEvent', '品牌尾货清', '品牌尾货清点击数']);
+        }
+
+         if(type){
+            location.href = 'http://m.chuchujie.com/details/detail.html?id=' + productId;
+            return false;
+        }
+        if(IsChuchujieAPP()){
+            var jsonDict = {"productId": productId, "static_id":76};
+            window.CcjJSBridgeInstance.callTemplate("CHUCHUITEM", JSON.stringify(jsonDict));
+        }else{
+            location.href = 'http://m.chuchujie.com/details/detail.html?id=' + productId;
+        }
+
+    }
+
+    /**
+     * 微信qq分享
+     * @param list
+     * @param type
+     */
+    function shareWeixin(list,type) {
+        var  shareurl ="http://huodong.chuchujie.com/brandClear/index.php?c=brand&m=index";
+        var imgUrl='http://huodongcdn.chuchujie.com/brandClear/imgs/0813/fenxiang.png';
+        var sharedesc='我正在看楚楚街品牌清仓活动，都是傲娇的品牌，只卖亲民的价格';
+        CcjJSBridge.call(
+                 list,
+                {
+                    title:sharedesc,
+                    imgUrl:imgUrl,
+                    url:shareurl,
+                    desc:sharedesc,
+                    type:0
+                },
+                function(res){
+                    if(res.code==0){
+                        switch (type){
+                            case '1':
+                                _czc.push(['_trackEvent','品牌清仓活动分享朋友圈','成功数']);
+                                break;
+                            case '2':
+                                _czc.push(['_trackEvent','品牌清仓活动分享微信朋友次数','成功数']);
+                                break;
+                            case '3':
+                                _czc.push(['_trackEvent','品牌清仓活动分享qq好友','成功数']);
+                                break;
+                            case '4':
+                                _czc.push(['_trackEvent','品牌清仓活动分享qq空间','成功数']);
+                                break;
+                        }
+                        $("#share_content").hide();
+                    }
+                }
+        );
+    }
+
+    /**
+     * listwiew
+     */
+    function goto(){
+        if(window._czc) {
+            _czc.push(['_trackEvent', '品牌尾货清', '品牌尾货清点击数']);
+        }
+
+        window.location.href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].'/brandClear/index.php?c=Brand&m=listView';?>";
+    }
+
+    /**
+     * 懒加载
+     */
+    $("img.lazy").lazyload({threshold:'0'});
+
+    /**
+     * 显示分享弹窗
+     */
+    function showPupop(){
+        $("#share_content").show();
+    }
+    /**
+     * 影藏
+     */
+    function hidePupop(){
+        $('#share_content').hide();
+    }
+</script>
+</html>

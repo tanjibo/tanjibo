@@ -1,0 +1,5 @@
+#这是注释
+#所有的.DS_Store 和 .idea 都不提交
+*.DS_Store
+*.idea
+node_modules/

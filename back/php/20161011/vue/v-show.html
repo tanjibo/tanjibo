@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>v-show 的简单实例</title>
+</head>
+<body>
+	<div id="app">
+	   <pre>
+	   	<p>v-show 和  v-if区别</p>
+	   	<p>v-show 使用display,而v-if是移除</p>
+	   </pre>
+		<p style="color:red" v-if="!message">请输入你的信息</p>
+		<textarea v-model="message">
+			
+		</textarea>
+		<button v-show="message">提交</button>
+	   <pre>{{$data | json}}</pre>
+	</div>
+</body>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+	
+	var vm=new Vue({
+        el:"#app",
+        data:{
+        	message:''
+        }
+	})
+</script>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>html5 多文件上传和FileList</title>
+</head>
+<body>
+ <input type="file" multiple id="more">
+ <input type="button" onclick="showFileName()" value="上传文件">
+</body>
+<script type="text/javascript">
+	function showFileName(){
+	 var file=document.getElementById('more');
+	 for(var i=0,j=file.files.length;i<j;i++){
+	 	alert(file.files.name)
+	 }
+	}
+</script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>promise 学习笔记第一步</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	window.onload=function(){
+		function pms1(){
+			return new Promise(function(resolve,reject){
+               setTimeout(function(){
+               	  console.log('执行任务1');
+               	  resolve('执行任务1完成');
+               },2000)
+			})
+		}
+
+		function pms2(){
+			return new Promise(function(resolve,reject){
+				setTimeout(function(){
+					console.log('执行任务2');
+					resolve('执行任务2成功');
+				},2000)
+			})
+		}
+
+		function pms3(){
+			return new Promise(function(resolve,reject){
+				setTimeout(function(){
+					console.log('执行任务3');
+					resolve('执行任务3成功');
+				})
+			})
+		}
+		pms1().then(function(data){
+			console.log('第一个回调:'+data);
+			return pms2();
+		})
+	}
+</script>
+</html>
