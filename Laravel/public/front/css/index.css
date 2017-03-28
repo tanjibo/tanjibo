@@ -1,0 +1,17 @@
+body {
+  background: #e9eaed;
+}
+li {
+  list-style: none;
+}
+.navbar {
+  margin-bottom: 0;
+}
+/**
+* 首页内容区域
+ */
+div.container-fluids li {
+  background: url('http://o9dm67cfv.bkt.clouddn.com/2016/1481268541058.png') no-repeat 50% 50%;
+  background-size: cover;
+  height: 200px;
+}

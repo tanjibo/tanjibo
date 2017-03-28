@@ -10,47 +10,45 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-// //后台首页
-// Route::get('/','IndexController@index');
-// //后台首页
-// Route::get('index','IndexController@index');
-// //后台登陆
-// Route::get('login',"IndexController@login");
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-//Route::get('foo',function(){
-//	return "hello world";
-//});
-//
-//Route::get('user/{id?}',function($id=100){
-//  echo $id;
-//})->middleware('checkage');
-//Route::get('testPost',function(){
-//	$csrf_token=csrf_token();
-//	$form=<<<FORM
-//	<form action="/hello" method="post">
-//
-//	<input type="submit" value="test"/>
-//	</form>
-//FORM;
-//return $form;
-//});
-//Route::post('hello' ,function(){
-//
-//});
-Route::get('now',function(){
-    return date('y-m-d H:i:s');
+Route::group(['namespace'=>'Front'],function(){
+    Route::get('/','IndexController@index');
+    Route::get('details/{id}','IndexController@show');
 });
+
+
+Route::group(['namespace'=>'Admin','prefix'=>'admin'],function($router){
+
+    Route::get('login','loginController@showLoginForm')->name('admin.login');
+    $router->post('login', 'LoginController@login');
+    $router->post('logout', 'LoginController@logout');
+
+    $router->get('dash', 'DashboardController@index');
+});
+
+//
+//Route::get('/', function () {
+//    app()->bind('HelpSpot\API', function ($app) {
+//        echo 111;
+//        return new HelpSpot\API($app->make('HttpClient'));
+//    });exit;
+//    dd(debug_backtrace());exit;
+//  $data=[
+//    'event'=>'anewMessage',
+//      'data'=>[
+//          'name'=>'tanjibo'
+//      ]
+//  ];
+//    \Illuminate\Support\Facades\Redis::set('aa','aa');
+//});
+//
+//Route::get('event',function(){
+//   $user=\App\User::find(1);
+//    dump($user);exit;
+//});
+//Auth::routes();
+//
+//Route::get('/home', 'HomeController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-
-
-Route::group(['middleware' => 'auth', 'namespace' => 'Admin', 'prefix' => 'admin'], function() {
-    Route::get('/', 'HomeController@index');
-    Route::resource('article','ArticleController');
-
-});

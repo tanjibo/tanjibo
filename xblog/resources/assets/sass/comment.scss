@@ -1,0 +1,46 @@
+@import "common";
+
+.comment-wrap {
+  margin: 5px 0 25px 0;
+  border-bottom: 1px dotted #eee;
+}
+
+.comment {
+  background: white;
+  margin: 5px 0 35px;
+  width: 100%;
+}
+
+.comment .comment-body {
+  padding: 30px $widgetPaddingLeftRight;
+  overflow-x: auto;
+}
+
+.comment .comment-header {
+  padding: 10px $widgetPaddingLeftRight;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  /*background-color: $widgetHeaderBgColor;*/
+}
+
+.comment .comment-info {
+  margin-left: 50px;
+
+  .comment-time {
+    font-size: 0.9em;
+    color: #d0d0d0
+  }
+
+  .comment-operation {
+    color: #d0d0d0
+  }
+  .comment-head {
+    font-size: 1.2em
+  }
+}
+
+.comment .markdown-content img {
+  display: block;
+  max-width: 95%;
+  border: solid 1px #EEEEEE;
+}

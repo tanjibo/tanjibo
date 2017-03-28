@@ -15,11 +15,9 @@ class CheckAge
      */
     public function handle($request, Closure $next)
     {
-//         dump($request->input('user'));
-//        dump($request);
-//         if($request->input('')<=200){
-////             return redirect('foo');
-//         }
-        return $next($request);
+
+       $response=$next($request);
+        echo 'dddd333';
+        return $response;
     }
 }

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>实例一</title>
+</head>
+
+<body>
+    <div id="app">
+         <button @click.prevent='addInput()'>添加一个</button>
+        <section v-for='(item,index) in inputModel'>
+      
+          <input-ui v-on:bb="aa" v-model='price' v-bind:num='index'></input-ui>
+          
+        </section>
+        {{total}}
+    </div>
+</body>
+<template id="inputModel">
+  <div>
+  	 <input type="text" ref="input" v-bind:value="value" v-on:input="updateValue($event.target.value)"/>
+  	 <input type="text" ref="input" v-bind:aa="aa" v-on:input2="updateValue($event.target.value)"/>
+      <button @click.prevent='increment()'>删除</button>
+  </div>
+   
+</template>
+<script src="http://cdn.bootcss.com/vue/2.0.7/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+<script src="https://cdn.rawgit.com/chrisvfritz/5f0a639590d6e648933416f90ba7ae4e/raw/98739fb8ac6779cb2da11aaa9ab6032e52f3be00/currency-validator.js"></script>
+
+<script type="text/javascript">
+
+Vue.component('input-ui', {
+    template: '#inputModel',
+    props:['num','value','aa'],
+     mounted: function () {
+    this.formatValue()
+  },
+    methods:{
+    	increment:function(){
+         
+         this.$emit('bb',this.num)
+    	},
+    	updateValue: function (value) {
+      var result = currencyValidator.parse(value, this.value)
+      if (result.warning) {
+        this.$refs.input.value = result.value
+      }
+      this.$emit('input', result.value)
+    }, 
+    	formatValue: function () {
+      this.$refs.input.value =  currencyValidator.format(this.value)
+    },
+
+    }
+
+
+})
+new Vue({
+    el: '#app',
+    data: {
+    	inputModel:[1],
+    	price:''
+ 
+    },
+    methods:{
+    	addInput:function(){
+    		this.inputModel.push(this.inputModel.length+1);
+    	},
+    	aa:function(index){
+    	alert(index)
+    	  this.inputModel.splice(index,1);
+    	  console.log(this.inputModel)
+    	}
+    },
+    computed:{
+    	total:function(){
+    		return this.price;
+    	}
+    }
+
+})
+</script>
+
+</html>

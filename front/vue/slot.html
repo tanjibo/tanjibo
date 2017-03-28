@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>slot 分发内容</title>
+</head>
+<body>
+  <div id="app">
+  	 <my-ui>
+  	   <p>A paragraph for the main content.</p>
+       <p>And another one.</p>
+       <div slot="somename">ddddd</div>
+  	 </my-ui>
+  </div>
+	<template  id="tpl">
+	     <div>
+	       <slot name="somename"></slot>
+	     	 <input type="text">
+	     	 <slot></slot>
+
+	     </div>
+		
+          
+	</template>
+</body>
+<script src="http://cdn.bootcss.com/vue/2.0.7/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/vue.resource/1.0.3/vue-resource.min.js"></script>
+<script type="text/javascript">
+	
+	Vue.component('my-ui',{
+       template:"#tpl",
+	})
+   new Vue({
+   	el:"#app"
+   })
+</script>
+</html>

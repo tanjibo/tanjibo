@@ -16,3 +16,8 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+
+Artisan::command('aa:send {user : 告诉他这个参数是什么}', function ($user) {
+    $this->info(\App\User::find(1)->email.'---'.$user);
+})->describe('描述');

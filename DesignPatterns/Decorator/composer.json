@@ -1,0 +1,11 @@
+{
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "MyRightCapital\\": "MyRightCapital/",
+            "Pipeline\\": "Pipeline/"
+        },
+        "files":["Pipeline/function.php"]
+    }
+
+}
